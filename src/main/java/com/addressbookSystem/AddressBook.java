@@ -11,7 +11,7 @@ public class AddressBook {
     public enum IOService{CONSOLE_IO, FILE_IO, DATABASE_IO,  REST_IO}
 
     Scanner scanner = new Scanner(System.in);
-    List<Contact> contactList = new ArrayList<>();
+   static List<Contact> contactList = new ArrayList<>();
     AddressBookManager addressBookManager = new AddressBookManager();
 
 

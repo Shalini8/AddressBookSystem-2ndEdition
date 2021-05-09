@@ -1,0 +1,2 @@
+Contacts{firstName='shalini', lastName='pandey', address='asna', city='jdp', email='sha.com', state='chhattisgarh', zip=494221, phoneNumber=9329747538}
+Contacts{firstName='rax', lastName='pandey', address='asna', city='raipur', email='r.com', state='cg', zip=49124, phoneNumber=789654123}

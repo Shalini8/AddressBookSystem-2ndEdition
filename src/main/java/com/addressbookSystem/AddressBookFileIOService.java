@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddressBookFileIOService {
+    private static final String HOME ="hp\\IdeaProjects\\NewAddressBookSystem\\src\\main\\resources\\";
 
     public void writeData(List<Contact> contactList , String addressBookName) {
         StringBuffer personBuffer = new StringBuffer();
@@ -17,7 +18,7 @@ public class AddressBookFileIOService {
 
         });
         try {
-            Files.write(Paths.get(addressBookName + ".txt"),personBuffer.toString().getBytes());
+            Files.write(Paths.get(HOME+addressBookName + ".txt"),personBuffer.toString().getBytes());
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -26,7 +27,7 @@ public class AddressBookFileIOService {
     public static List<Contact> readData (){
         List<Contact> contactPersonList = new ArrayList<>();
         try {
-            Files.lines(new File("mumbai.txt").toPath())
+            Files.lines(new File(HOME+"mumbai.txt").toPath())
                     .map(line -> line.trim())
                     .forEach(line->System.out.println(line));
         }catch (IOException e){
@@ -36,7 +37,7 @@ public class AddressBookFileIOService {
     }
     public void printData(){
         try {
-            Files.lines(new File("mumbai.txt").toPath())
+            Files.lines(new File(HOME+"mumbai.txt").toPath())
                     .forEach(System.out::println);
         }catch (IOException e){
             e.printStackTrace();

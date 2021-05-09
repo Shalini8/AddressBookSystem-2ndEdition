@@ -1,5 +1,10 @@
 package com.addressbookSystem;
 
+
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AddressBookMain {
@@ -20,9 +25,11 @@ public class AddressBookMain {
             System.out.println("[5] :Search City of which u want the count of contacts");
             System.out.println("[6] :Sort by Name");
             System.out.println("[7] :Sort by Zip");
-            System.out.println("[8] :write in a .txtfile");
+            System.out.println("[8] :view in a .txtfile");
             System.out.println("[9] :read from a .txtfile");
-            System.out.println("[10] :Exit");
+            System.out.println("[10] :view in a .csvfile");
+            System.out.println("[11] :read from a .csvfile");
+            System.out.println("[12] :Exit");
             System.out.println("Enter choice: ");
             int option = sc.nextInt();
             switch (option) {
@@ -86,7 +93,22 @@ public class AddressBookMain {
                     addressBook1.writeContactPersonData(AddressBook.IOService.FILE_IO);
                     break;
                 case 9:
+                    AddressBookFileIOService.readData();
                     addressBookFileIOService.printData();
+                    break;
+                case 10:
+                    try {
+                        AddressBookCSVService.writeDataToCSV();
+                    }catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 11:
+                    try {
+                        AddressBookCSVService.readDataFromCSV();
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 12:
                     flag = false;
