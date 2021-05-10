@@ -1,5 +1,7 @@
 package com.addressbookSystem;
 
+import com.addressbookSystem.AddressBook;
+import com.addressbookSystem.Contact;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.bean.StatefulBeanToCsv;
@@ -15,9 +17,8 @@ import java.nio.file.Paths;
 
 public class AddressBookCSVService {
 
-   private static final String HOME ="hp\\IdeaProjects\\NewAddressBookSystem\\src\\main\\resources\\";
     public static void writeDataToCSV() throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
-        try (Writer writer = Files.newBufferedWriter(Paths.get(HOME+"Contacts.csv"));) {
+        try (Writer writer = Files.newBufferedWriter(Paths.get("Contacts.csv"));) {
             StatefulBeanToCsvBuilder<Contact> builder = new StatefulBeanToCsvBuilder<>(writer);
             StatefulBeanToCsv<Contact> beanWriter = builder.build();
             beanWriter.write(AddressBook.contactList);
@@ -28,7 +29,7 @@ public class AddressBookCSVService {
     }
 
     public static void readDataFromCSV() throws IOException {
-        try (Reader reader = Files.newBufferedReader(Paths.get(HOME+"Contacts.csv"));
+        try (Reader reader = Files.newBufferedReader(Paths.get("Contacts.csv"));
              CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();){
             String[] nextRecord;
             while ((nextRecord = csvReader.readNext()) != null) {
